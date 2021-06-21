@@ -16,12 +16,7 @@ class Api {
                 authorization: this._token
                 
             }
-        }).then(response => {
-            if(response.ok){
-                return response.json();
-            }
-            return Promise.reject(`Ошибка ${response.status}`)
-        })
+        }).then(this._checkApiRequest);
     }
     getUserInfo(){
         return fetch(`${this._adress}/users/me`,{
@@ -29,12 +24,7 @@ class Api {
                 authorization: '1c933ec4-a4fc-4d43-aaf4-c9a8a8844745',
                 'Content-Type': 'application/json'
             }
-        }).then(response => {
-            if(response.ok){
-                return response.json();
-            }
-            return Promise.reject(`Ошибка ${response.status}`)
-        })
+        }).then(this._checkApiRequest);
     
     }
     getInitialData() {
@@ -52,12 +42,7 @@ class Api {
                 about: profession
             })
         })
-        .then(response => {
-            if(response.ok){
-                return response.json();
-            }
-            return Promise.reject(`Ошибка ${response.status}`)
-        })
+            .then(this._checkApiRequest);
         
             
     }
@@ -73,12 +58,7 @@ class Api {
                 link: link
             })
         })
-        .then(response => {
-            if(response.ok){
-                return response.json();
-            }
-            return Promise.reject(`Ошибка ${response.status}`)
-        }) 
+            .then(this._checkApiRequest);
     }
     deleteCard(id){
         return fetch(`${this._adress}/cards/${id}`, {
@@ -88,12 +68,7 @@ class Api {
                     'Content-Type': 'application/json'
                 },
         })
-        .then(response => {
-            if(response.ok){
-                return response.json();
-            }
-            return Promise.reject(`Ошибка ${response.status}`)
-        });
+            .then(this._checkApiRequest);
     }
     addLike(id){
         return fetch(`${this._adress}/cards/likes/${id}`, {
@@ -103,12 +78,7 @@ class Api {
                     'Content-Type': 'application/json'
                 },
         })
-        .then(response => {
-            if(response.ok){
-                return response.json();
-            }
-            return Promise.reject(`Ошибка ${response.status}`)
-        });
+            .then(this._checkApiRequest);
     }
 
     //Удаление лайка
@@ -120,12 +90,7 @@ class Api {
                     'Content-Type': 'application/json'
                 },
         })
-        .then(response => {
-            if(response.ok){
-                return response.json();
-            }
-            return Promise.reject(`Ошибка ${response.status}`)
-        });
+            .then(this._checkApiRequest);
 
     }
 
@@ -140,12 +105,7 @@ class Api {
                 avatar: data
             })
     })
-    .then(response => {
-        if(response.ok){
-            return response.json();
-        }
-        return Promise.reject(`Ошибка ${response.status}`)
-    });
+            .then(this._checkApiRequest);
 
     }
     changeLikeCardStatus(id, isLiked) {

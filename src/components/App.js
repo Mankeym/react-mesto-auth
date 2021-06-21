@@ -15,7 +15,7 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { CardsContext } from "../contexts/CardsContext";
 import Login from "./Login";
 import ProtectedRoute from "./ProtectedRoute";
-import * as Auth from './Auth';
+import * as auth from '../utils/auth';
 import InfoTooltip from "./InfoTooltip";
 
 
@@ -64,7 +64,7 @@ function App() {
         const jwt = localStorage.getItem('jwt');
         if (jwt){
             // проверим токен
-            Auth.getToken(jwt)
+            auth.getToken(jwt)
                 .then((res) => {
                     if (res){
                         setEmail(res.data.email)
@@ -158,7 +158,7 @@ function App() {
         .catch((err) => console.log("Ошибка удаления карточки - " + err));
   }
     function handleRegistration(password, email){
-        Auth.register(password, email)
+        auth.register(password, email)
             .then((data)=>{
                 if (data === 'Err'){
                     setInfoTooltipOpen(true);
@@ -169,7 +169,7 @@ function App() {
             })
     }
     function handleLogIn(password, email){
-        Auth.logIn(password, email)
+        auth.logIn(password, email)
             .then((data)=>{
                 if (data === 'Err'){
 
