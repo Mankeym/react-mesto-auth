@@ -28,7 +28,8 @@ export default function AddPlacePopup (props) {
     return (
         <PopupWithForm
             isOpen={props.isOpen}
-            name="update"
+            id={'idAddPlace'}
+            name={'addPlace'}
             title="Добавить карточку"
             onClose={props.onClose}
             buttonText={'Сохранить'}

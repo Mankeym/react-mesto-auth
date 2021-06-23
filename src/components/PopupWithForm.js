@@ -7,14 +7,15 @@ export default function PopupWithForm({
       onClose,
       onSubmit,
       title,
-      buttonText
+      buttonText,
+      id
   }){
     return (
         <section className={`overlay ${isOpen ? 'overlay_active' : ''}`}>
             <div className="popup">
                 <h2 className="popup__title">{title}</h2>
                 <form className="popup__form"
-                      id={name}
+                      id={id}
                       name={name}
                       onSubmit={onSubmit}>
                     {children}

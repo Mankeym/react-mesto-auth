@@ -9,7 +9,8 @@ export default function PopupDelete (props) {
     return (
         <PopupWithForm
             isOpen={props.isOpen}
-            name="update"
+            id={'idDeletePopup'}
+            name={'deletePopup'}
             onClose={props.onClose}
             title="Вы уверены?"
             buttonText={'Да'}

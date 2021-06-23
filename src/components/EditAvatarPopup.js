@@ -18,7 +18,8 @@ export default function EditAvatarPopup(props) {
     return (
         <PopupWithForm
             isOpen={props.isOpen}
-            name="update"
+            id={'idAvatar'}
+            name={'updateAvatar'}
             onClose={props.onClose}
             onSubmit={handleSubmit}
             submitButtonValue={buttonValue}

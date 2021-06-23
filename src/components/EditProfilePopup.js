@@ -35,7 +35,8 @@ export default function EditProfilePopup (props) {
     return (
         <PopupWithForm
             isOpen={props.isOpen}
-            name="update"
+            id={'idProfile'}
+            name={'updateProfile'}
             title="Редактировать профиль"
             onClose={props.onClose}
             buttonText={'Сохранить'}
