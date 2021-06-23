@@ -16,7 +16,6 @@ export default function PopupWithForm({
                 <form className="popup__form"
                       id={name}
                       name={name}
-                      noValidate
                       onSubmit={onSubmit}>
                     {children}
                     <button value={'Сохранить'} type="submit" className="popup__submit popup__submit-profile" >{buttonText}

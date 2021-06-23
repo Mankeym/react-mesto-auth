@@ -70,7 +70,8 @@ function App() {
                         setEmail(res.data.email)
                         setLoggedIn(true);
                     }
-                });
+                })
+                .catch((err) => console.log(err));
         }
     }
     function closeAllPopups() {
@@ -167,6 +168,7 @@ function App() {
                     setInfoTooltipOpen(true);
                 }
             })
+            .catch((err) => console.log(err));
     }
     function handleLogIn(password, email){
         auth.logIn(password, email)
@@ -176,15 +178,17 @@ function App() {
                 } else {
                     localStorage.setItem('jwt', data.token);
                     setLoggedIn(true);
+                    setEmail(email);
                     history.push('/profile');
                 }
             })
+            .catch((err) => console.log(err));
     }
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <CardsContext.Provider value={cards}>
                 <div className="page">
-                    <Header email={email} link='/sign-in' signOut={signOut} title={"Выйти"} />
+                    {loggedIn && <Header email={email} loggedIn={loggedIn} title={"Выйти"} link='/sign-in' signOut={signOut}/>}
                     <EditAvatarPopup
                         isOpen={isEditAvatarPopupOpen}
                         onClose={closeAllPopups}
@@ -207,6 +211,7 @@ function App() {
                         onClose={closeAllPopups}
                         onCardDelete={handleDeleteCardSubmit}
                     />
+                    <InfoTooltip isOk={tooltip} isOpen={isInfoTooltipOpen} onClose={closeAllPopups}/>
           <Switch>
               <ProtectedRoute path='/profile'
                               loggedIn={loggedIn}
@@ -218,12 +223,12 @@ function App() {
                               onCardDelete={handleCardDeleteClick}
                               onCardLike={handleCardLike}
               />
+
               <Route path="/sign-up">
-                  <InfoTooltip isOk={tooltip} isOpen={isInfoTooltipOpen} onClose={closeAllPopups}/>
                   <Registr onRegister={handleRegistration} />
+
               </Route>
               <Route path="/sign-in">
-                  <InfoTooltip isOk={tooltip} isOpen={isInfoTooltipOpen} onClose={closeAllPopups}/>
                   <Login onLogIn={handleLogIn} />
               </Route>
               <Route exact path="/">

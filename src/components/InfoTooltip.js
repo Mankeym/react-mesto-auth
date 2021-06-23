@@ -9,7 +9,7 @@ function InfoTooltip(props){
                     <img onClick={props.onClose} className="overlay__image" src={close} alt="Крест"/>
                 </button>
                 <div className="popup__card">
-                    <img src={props.isOk ? Ok : Err} className="popup__response"/>
+                    <img src={props.isOk ? Ok : Err} className="popup__response" alt="Галочка ОК"/>
                     <p className="popup__response-text">{props.isOk ? "Вы успешно зарегистрировались!" : "Что-то пошло не так! Попробуйте ещё раз."}</p>
                 </div>
             </div>
